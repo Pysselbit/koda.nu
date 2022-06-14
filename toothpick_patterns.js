@@ -34,35 +34,40 @@
     if (queue.length == 0)
       return;
     
-    var toothpick = queue.shift();
+    var n = queue[0].n;
     
-    // If 2 toothpicks meet at the same coordinates, discard coordinates:
-    if (queued[toothpick.x + dx][toothpick.y + dy] > 1)
-      return;
-    
-    var x1, x2, y1, y2;
-    
-    x1 = x2 = toothpick.x;
-    y1 = y2 = toothpick.y;
-    
-    // Create horizontal line:
-    if (toothpick.orientation == HORIZONTAL) {
-      x1++;
-      x2--;
-    }
-    
-    // Or create vertical line:
-    if (toothpick.orientation == VERTICAL) {
-      y1++;
-      y2--;
-    }
-    
-    drawLine(x1, y1, x2, y2);
-    
-    // Enqueue new lines and the ends of this line:
-    if (toothpick.n - 1 > 0) {
-      enqueue(x1, y1, !toothpick.orientation, toothpick.n - 1);
-      enqueue(x2, y2, !toothpick.orientation, toothpick.n - 1);
+    // Draw all lines of this recursion:
+    while (queue.length > 0 && queue[0].n == n) {
+      var toothpick = queue.shift();
+      
+      // If 2 toothpicks meet at the same coordinates, discard coordinates:
+      if (queued[toothpick.x + dx][toothpick.y + dy] > 1)
+        continue;
+      
+      var x1, x2, y1, y2;
+      
+      x1 = x2 = toothpick.x;
+      y1 = y2 = toothpick.y;
+      
+      // Create horizontal line:
+      if (toothpick.orientation == HORIZONTAL) {
+        x1++;
+        x2--;
+      }
+      
+      // Or create vertical line:
+      if (toothpick.orientation == VERTICAL) {
+        y1++;
+        y2--;
+      }
+      
+      drawLine(x1, y1, x2, y2);
+      
+      // Enqueue new lines and the ends of this line:
+      if (toothpick.n - 1 > 0) {
+        enqueue(x1, y1, !toothpick.orientation, toothpick.n - 1);
+        enqueue(x2, y2, !toothpick.orientation, toothpick.n - 1);
+      }
     }
   }
   
