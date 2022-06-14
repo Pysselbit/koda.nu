@@ -27,9 +27,15 @@
     }
   }
   
+  // Colors to cycle through:
+  var colors = ["red", "orange", "yellow", "green", "cyan", "magenta"];
+  var colorIndex = 0;
+  
+  fill("#000000ff");
+  
   function update() {
     // Fade pattern over time:
-    fill("#ffffff08");
+    fill("#00000008");
     
     if (queue.length == 0) {
       for (var x = 0; x < width; x++) {
@@ -40,6 +46,8 @@
       
       // Queue first operation:
       enqueue(0, 0, HORIZONTAL, N);
+    
+      colorIndex = (colorIndex + 1) % colors.length;
     }
     
     var n = queue[0].n;
@@ -108,7 +116,7 @@
     x2 = CX + SIZE * (x2 - dx);
     y2 = CY + SIZE * (y2 - dy);
     
-    line(x1, y1, x2, y2);
+    line(x1, y1, x2, y2, 1, colors[colorIndex]);
   }
 
 </script>
