@@ -1,5 +1,5 @@
-// Hitomezashi stitch pattern, inspired by https://youtu.be/JbfhzlMk2eY
 <script src="https://koda.nu/simple.js">
+  // Hitomezashi stitch pattern, inspired by https://youtu.be/JbfhzlMk2eY
 
   var threshold = 0.5;
   var n = 20;

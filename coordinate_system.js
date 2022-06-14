@@ -1,5 +1,5 @@
-// 10x10 coordinate system:
 <script src="https://koda.nu/simple.js">
+  // 10x10 coordinate system
 
   // Move origin and scale:
   translate(200, 200);
