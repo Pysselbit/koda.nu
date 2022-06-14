@@ -30,12 +30,15 @@
   // Queue first operation:
   enqueue(0, 0, HORIZONTAL, N);
   
-  while (queue.length > 0) {
+  function update() {
+    if (queue.length == 0)
+      return;
+    
     var toothpick = queue.shift();
     
     // If 2 toothpicks meet at the same coordinates, discard coordinates:
     if (queued[toothpick.x + dx][toothpick.y + dy] > 1)
-      continue;
+      return;
     
     var x1, x2, y1, y2;
     
