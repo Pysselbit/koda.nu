@@ -27,12 +27,20 @@
     }
   }
   
-  // Queue first operation:
-  enqueue(0, 0, HORIZONTAL, N);
-  
   function update() {
-    if (queue.length == 0)
-      return;
+    // Fade pattern over time:
+    fill("#ffffff08");
+    
+    if (queue.length == 0) {
+      for (var x = 0; x < width; x++) {
+        for (var y = 0; y < height; y++) {
+          queued[x][y] = 0;
+        }
+      }
+      
+      // Queue first operation:
+      enqueue(0, 0, HORIZONTAL, N);
+    }
     
     var n = queue[0].n;
     
