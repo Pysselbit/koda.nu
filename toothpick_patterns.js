@@ -22,7 +22,7 @@
   for (var x = 0; x < width; x++) {
     queued.push([]);
     
-    for (var y = 0; y < width; y++) {
+    for (var y = 0; y < height; y++) {
       queued[x].push(0);
     }
   }
