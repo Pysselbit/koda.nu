@@ -6,7 +6,7 @@
   const VERTICAL = false;
   
   // N recursion:
-  const N = 122;
+  const N = 128;
   
   // Space needed for N recursions:
   var width = N + (N + 1) % 2;
